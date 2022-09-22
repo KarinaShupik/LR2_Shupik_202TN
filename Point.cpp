@@ -15,7 +15,7 @@ Point Point::Init(int x, int y)
 
 Point Point::Read()
 {
-	//вводимо дані x та у
+	//РІРІРѕРґРёРјРѕ РґР°РЅС– x С‚Р° Сѓ
 	Point tmp;
 	cout << "Input first point x: " << endl;
 	cin >> tmp.x;
@@ -38,12 +38,12 @@ void Point::Display()
 }
 
 
-float Point::distanceToStartCoordinate() //визначення відстані до початку координат
+float Point::distanceToStartCoordinate() //РІРёР·РЅР°С‡РµРЅРЅСЏ РІС–РґСЃС‚Р°РЅС– РґРѕ РїРѕС‡Р°С‚РєСѓ РєРѕРѕСЂРґРёРЅР°С‚
 {
 	return sqrt(x * x + y * y);
 }
 
-char Point::toString() //відстані між двома точками
+char Point::toString() //РІС–РґСЃС‚Р°РЅС– РјС–Р¶ РґРІРѕРјР° С‚РѕС‡РєР°РјРё
 {
 	float x1;
 	float y1;
@@ -56,7 +56,7 @@ char Point::toString() //відстані між двома точками
 	string convertToString = to_string(distanceToP);
 	cout << "Distance to point: " + convertToString << endl;
 
-	//порівняння на збіг і розбіжність
+	//РїРѕСЂС–РІРЅСЏРЅРЅСЏ РЅР° Р·Р±С–Рі С– СЂРѕР·Р±С–Р¶РЅС–СЃС‚СЊ
 	if (x == y && x1 == y1) {
 		cout << "Dots match" << endl;
 	}
@@ -67,7 +67,56 @@ char Point::toString() //відстані між двома точками
 	return 0;
 }
 
-float Point::polarCoordinates() //перетворення в полярні координати
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРё
+Point::Point()
+{
+	x = 0;
+	y = 0;
+}
+
+Point::Point(float valueX, float valueY)
+{
+	x = valueX;
+	y = valueY;
+}
+
+//РїСЂРµС„С–РєСЃРЅРёР№ С–РЅРєСЂРµРјРµРЅС‚
+Point& Point::operator++()
+{
+	this->x++;
+	this->y++;
+
+	return *this;
+}
+
+//РїСЂРµС„С–РєСЃРЅРёР№ РґРµРєСЂРµРјРµРЅС‚
+Point& Point::operator--()
+{
+	this->x--;
+	this->y--;
+
+	return *this;
+}
+
+//Р·Р±С–Р¶РЅС–СЃС‚СЊ
+bool Point::operator==(const Point& other)
+{
+	if (this->x == other.x1 && this->y == other.y1) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+//СЂРѕР·Р±С–Р¶РЅС–СЃС‚СЊ
+bool Point::operator!=(const Point& other)
+{
+	return !(this->x == other.x1 && this->y == other.y1);
+}
+
+
+float Point::polarCoordinates() //РїРµСЂРµС‚РІРѕСЂРµРЅРЅСЏ РІ РїРѕР»СЏСЂРЅС– РєРѕРѕСЂРґРёРЅР°С‚Рё
 {
 	float r;//radius
 	float phi;//angle
@@ -80,14 +129,15 @@ float Point::polarCoordinates() //перетворення в полярні координати
 	return 0;
 }
 
-float Point::transferX() //переміщення точки по осі X
+float Point::transferX() //РїРµСЂРµРјС–С‰РµРЅРЅСЏ С‚РѕС‡РєРё РїРѕ РѕСЃС– X
 {
 	x++;
 	return x;
 }
 
-float Point::transferY() //переміщення точки по осі Y
+float Point::transferY() //РїРµСЂРµРјС–С‰РµРЅРЅСЏ С‚РѕС‡РєРё РїРѕ РѕСЃС– Y
 {
 	y++;
 	return y;
 }
+
